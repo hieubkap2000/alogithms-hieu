@@ -10,17 +10,28 @@ const listProduct = [
   { name: "Case", price: 120, quality: 28, categoryId: 5 },
 ];
 
-function sortByName(listProduct) {
+const listCategory = [
+  { id: 1, name: "Comuter" },
+  { id: 2, name: "Memory" },
+  { id: 3, name: "Card" },
+  { id: 4, name: "Acsesory" },
+];
+
+function minByPrice(listProduct) {
   var n = listProduct.length;
-  for (let i = 1; i < n; i++) {
-    var current = listProduct[i];
-    let j = i - 1;
-    while (j > -1 && current.name.length > listProduct[j].name.length) {
-      listProduct[j + 1] = listProduct[j];
-      j--;
+  var minPrice = 0;
+
+  for (let i = 0; i < n; i++) {
+    var min = i;
+    for (let j = i + 1; j < n; j++) {
+      if (listProduct[j].price < listProduct[min].price) {
+        minPrice = listProduct[j].price;
+        min = j;
+      }
     }
-    listProduct[j + 1] = current;
   }
-  return listProduct;
+  
+  return minPrice;
 }
-console.log(sortByName(listProduct));
+
+console.log(minByPrice(listProduct));
