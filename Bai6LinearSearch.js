@@ -14,7 +14,7 @@ function findProductByPrice(listProduct, price) {
   var productByPrice = [];
   listProduct.forEach((product) => {
     if (product.price <= price) {
-      productByPrice.push(product);
+      productByPrice.push(product.name);
     }
   });
   return productByPrice;
