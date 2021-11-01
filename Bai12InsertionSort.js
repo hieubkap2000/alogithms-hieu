@@ -10,15 +10,19 @@ const listProduct = [
   { name: "Case", price: 120, quality: 28, categoryId: 5 },
 ];
 
-function sortByPrice(listProduct) {
-  for (var i = 0; i < listProduct.length; i++) {
-    for (let j = i + 1; j < listProduct.length; j++) {
-      if (listProduct[i].price > listProduct[j].price) {
-        var tmp = listProduct[i];
-        listProduct[i] = listProduct[j];
-        listProduct[j] = tmp;
-      }
+function sortByName(listProduct) {
+  var n = listProduct.length;
+  debugger
+  for (let i = 1; i < n; i++) {
+    var current = listProduct[i];
+    let j = i - 1;
+    while (j > -1 && current.name.length > listProduct[j].name.length) {
+        
+      listProduct[j + 1] = listProduct[j];
+      j--;
     }
+    listProduct[j + 1] = current;
   }
   return listProduct;
 }
+console.log(sortByName(listProduct));
