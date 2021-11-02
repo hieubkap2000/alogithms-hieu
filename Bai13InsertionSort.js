@@ -13,17 +13,15 @@ const listProduct = [
 function maxByPrice(listProduct) {
   var n = listProduct.length;
   var maxProduct = listProduct[0];
+  debugger;
   for (let i = 0; i < n; i++) {
     var max = i;
 
     for (let j = i + 1; j < n; j++) {
       if (listProduct[j].price > listProduct[max].price) {
+        maxProduct = listProduct[j];
         max = j;
       }
-    }
-
-    if (maxProduct.price < listProduct[max].price) {
-      maxProduct = listProduct[max].price;
     }
   }
 
