@@ -12,21 +12,26 @@ const listProduct = [
 
 function maxByPrice(listProduct) {
   var n = listProduct.length;
-  var maxPrice = {};
-  var tmp = 0;
+  var maxProduct = {};
   debugger;
   for (let i = 0; i < n; i++) {
     var max = i;
+
     for (let j = i + 1; j < n; j++) {
       if (listProduct[j].price > listProduct[max].price) {
+        maxProduct = listProduct[j];
         max = j;
       }
     }
-    if (tmp < listProduct[max].price) {
-      maxPrice = listProduct[max];
+
+    if (max == i) {
+      maxProduct = listProduct[max];
+    } else {
+      i = max;
     }
   }
-  return maxPrice;
+
+  return maxProduct;
 }
 
 console.log(maxByPrice(listProduct));

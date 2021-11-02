@@ -12,18 +12,19 @@ const listProduct = [
 
 function minByPrice(listProduct) {
   var n = listProduct.length;
-  var minPrice = {};
+  var minProduct = {};
 
   for (let i = 0; i < n; i++) {
     var min = i;
     for (let j = i + 1; j < n; j++) {
       if (listProduct[j].price < listProduct[min].price) {
-        minPrice = listProduct[j];
+        minProduct = listProduct[j];
         min = j;
       }
     }
   }
-  
-  return minPrice;
+
+  return minProduct;
 }
 
+console.log(minByPrice(listProduct));
