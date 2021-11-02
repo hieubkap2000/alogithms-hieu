@@ -9,23 +9,38 @@ const listProduct = [
   { name: "Monitor", price: 120, quality: 28, categoryId: 2 },
   { name: "Case", price: 120, quality: 28, categoryId: 5 },
 ];
+const listCategory = [
+  { id: 1, name: "Comuter" },
+  { id: 2, name: "Memory" },
+  { id: 3, name: "Card" },
+  { id: 4, name: "Acsesory" },
+];
 
-function maxByPrice(listProduct) {
-  var n = listProduct.length;
-  var maxProduct = listProduct[0];
-  debugger;
-  for (let i = 0; i < n; i++) {
-    var max = i;
+function sortByCategoryName(listProduct, listCategory) {
+  var listProductByCategory = [];
+  var lengthCategory = listCategory.length;
+  var lengthProduct = listProduct.length;
 
-    for (let j = i + 1; j < n; j++) {
-      if (listProduct[j].price > listProduct[max].price) {
-        maxProduct = listProduct[j];
-        max = j;
+  for (let i = 1; i < lengthCategory; i++) {
+    var current = listCategory[i];
+    let j = i - 1;
+
+    while (j > -1 && current.name.localeCompare(listCategory[j].name) < 0) {
+      listCategory[j + 1] = listCategory[j];
+      j--;
+    }
+    listCategory[j + 1] = current;
+  }
+
+  for (let r = 0; r < lengthCategory; r++) {
+    for (let q = 0; q < lengthProduct; q++) {
+      if (listCategory[r].id == listProduct[q].categoryId) {
+        listProductByCategory.push(listProduct[q]);
       }
     }
   }
 
-  return maxProduct;
+  return listProductByCategory;
 }
-
-console.log(maxByPrice(listProduct));
+//sortByCategoryName(listProduct, listCategory);
+//console.log(sortByCategoryName(listProduct, listCategory));
