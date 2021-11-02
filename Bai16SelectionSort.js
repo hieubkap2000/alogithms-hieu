@@ -10,20 +10,23 @@ const listProduct = [
   { name: "Case", price: 120, quality: 28, categoryId: 5 },
 ];
 
-function minByPrice(listProduct) {
+function maxByPrice(listProduct) {
   var n = listProduct.length;
-  var minPrice = {};
-
+  var maxPrice = {};
+  var tmp = 0;
+  debugger;
   for (let i = 0; i < n; i++) {
-    var min = i;
+    var max = i;
     for (let j = i + 1; j < n; j++) {
-      if (listProduct[j].price < listProduct[min].price) {
-        minPrice = listProduct[j];
-        min = j;
+      if (listProduct[j].price > listProduct[max].price) {
+        max = j;
       }
     }
+    if (tmp < listProduct[max].price) {
+      maxPrice = listProduct[max];
+    }
   }
-  
-  return minPrice;
+  return maxPrice;
 }
 
+console.log(maxByPrice(listProduct));

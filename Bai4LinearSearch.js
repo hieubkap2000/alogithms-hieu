@@ -11,11 +11,10 @@ var listProduct = [
 ];
 
 function findProduct(listProduct, nameProduct) {
-  var p = "";
-  listProduct.forEach((product) => {
-    if (product.name == nameProduct) {
-      p = product;
+  for (let i = 0; i < listProduct.length; i++) {
+    if (listProduct[i].name == nameProduct) {
+      return listProduct[i];
     }
-  });
-  return p;
+  }
 }
+
